@@ -10,6 +10,11 @@ defineProps({
 import { server } from "../helper";
 import axios from "axios";
 
+import Vue from "vue";
+import TextHighlight from "vue-text-highlight";
+
+Vue.component("text-highlight", TextHighlight);
+
 export default {
   data() {
     return {
@@ -34,8 +39,6 @@ export default {
     <h3 class="green">{{ msg }}</h3>
     <input v-model="symtomInput" />
     <button v-on:click="searchSymtom()">Search</button>
-  </div>
-  <div>
     <ul>
       <li v-for="(symtom, index) in matchingSymtoms" :key="index">
         <text-highlight :queries="symtomInput">{{ symtom }}</text-highlight>
